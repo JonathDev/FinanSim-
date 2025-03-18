@@ -83,38 +83,8 @@
     </form>
 
     <!-- Script inchangé -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const form = document.getElementById('formSalaire');
-            const inputs = form.querySelectorAll('input[type="number"], input[type="radio"], input[type="range"]');
-            const champModifie = document.getElementById('champ_modifie');
+    <script src="{% static 'brutnet/js/script.js' %}"></script>
 
-            const tempsTravail = document.getElementById('temps_travail');
-            const tempsTravailVal = document.getElementById('temps_travail_val');
-
-            const tauxPrelevement = document.getElementById('taux_prelevement');
-            const tauxPrelevementVal = document.getElementById('taux_prelevement_val');
-
-            tempsTravail.addEventListener('input', function() {
-                tempsTravailVal.textContent = tempsTravail.value;
-            });
-
-            tauxPrelevement.addEventListener('input', function() {
-                tauxPrelevementVal.textContent = tauxPrelevement.value;
-            });
-
-            inputs.forEach(input => {
-                input.addEventListener('change', (e) => {
-                    if (e.target.type === "radio" && e.target.name === "statut") {
-                        champModifie.value = "statut";
-                    } else {
-                        champModifie.value = e.target.name;
-                    }
-                    form.submit();
-                });
-            });
-        });
-    </script>
 
 </body>
 </html>
