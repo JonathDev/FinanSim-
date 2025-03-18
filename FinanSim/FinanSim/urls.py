@@ -15,8 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include # ne pas oublier d'importer path(fait automatiquement), et inclube ( il n'est pas fait automatiquement)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("brutnet/", include("brutnet.urls")),  # Redirige vers l'application de conversion
 ]

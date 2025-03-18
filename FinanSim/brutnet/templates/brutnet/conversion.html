@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Salaire Brut en Net</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'brutnet/css/style.css' %}">
+</head>
+
+<body>
+
+    <h1>Calcul du Salaire Brut en Net</h1>
+
+    <form method="POST" id="formSalaire">
+        {% csrf_token %}
+
+        <div class="container-cadres">
+
+            <!-- Cadre 1 à gauche -->
+            <fieldset class="cadre">
+                <legend>Salaire et Statut</legend>
+
+                <input type="hidden" id="champ_modifie" name="champ_modifie" value="">
+
+                <label for="salaire_annuel_brut">Salaire annuel brut :</label>
+                <input type="number" step="0.01" name="salaire_annuel_brut" id="salaire_annuel_brut" value="{{ salaire_annuel_brut }}">
+
+                <label for="salaire_annuel_net">Salaire annuel net :</label>
+                <input type="number" step="0.01" name="salaire_annuel_net" id="salaire_annuel_net" value="{{ salaire_annuel_net }}">
+
+                <label for="salaire_mensuel_brut">Salaire mensuel brut :</label>
+                <input type="number" step="0.01" name="salaire_mensuel_brut" id="salaire_mensuel_brut" value="{{ salaire_mensuel_brut }}">
+
+                <label for="salaire_mensuel_net">Salaire mensuel net :</label>
+                <input type="number" step="0.01" name="salaire_mensuel_net" id="salaire_mensuel_net" value="{{ salaire_mensuel_net }}">
+
+                <label for="taux_horaire_brut">Taux horaire brut :</label>
+                <input type="number" step="0.01" name="taux_horaire_brut" id="taux_horaire_brut" value="{{ taux_horaire_brut }}">
+
+                <label for="taux_horaire_net">Taux horaire net :</label>
+                <input type="number" step="0.01" name="taux_horaire_net" id="taux_horaire_net" value="{{ taux_horaire_net }}">
+
+                <legend>Statut :</legend>
+                <label><input type="radio" name="statut" value="non-cadre" {% if statut == "non-cadre" %}checked{% endif %}> Salarié non-cadre</label>
+                <label><input type="radio" name="statut" value="cadre" {% if statut == "cadre" %}checked{% endif %}> Salarié cadre</label>
+                <label><input type="radio" name="statut" value="fonction-publique" {% if statut == "fonction-publique" %}checked{% endif %}> Fonction publique</label>
+                <label><input type="radio" name="statut" value="profession-liberale" {% if statut == "profession-liberale" %}checked{% endif %}> Profession libérale</label>
+                <label><input type="radio" name="statut" value="portage-salarial" {% if statut == "portage-salarial" %}checked{% endif %}> Portage salarial</label>
+            </fieldset>
+
+            <!-- Cadre 2 à droite -->
+            <fieldset class="cadre">
+                <legend>Options supplémentaires</legend>
+
+                <label for="temps_travail">
+                    Temps de travail : <span id="temps_travail_val">100</span> %
+                </label>
+                <input type="range" id="temps_travail" name="temps_travail" min="10" max="100" step="10" value="100">
+
+                <label>Nombre de mois de prime conventionnelle :</label>
+                <label><input type="radio" name="mois_prime" value="12" checked> 12 mois</label>
+                <label><input type="radio" name="mois_prime" value="13"> 13 mois</label>
+                <label><input type="radio" name="mois_prime" value="14"> 14 mois</label>
+                <label><input type="radio" name="mois_prime" value="15"> 15 mois</label>
+                <label><input type="radio" name="mois_prime" value="16"> 16 mois</label>
+
+                <label for="taux_prelevement">
+                    Taux de prélèvement à la source : <span id="taux_prelevement_val">0</span> %
+                </label>
+                <input type="range" id="taux_prelevement" name="taux_prelevement" min="0" max="43" step="0.5" value="0">
+
+            </fieldset>
+
+        </div>
+
+        <div style="width: 100%; text-align: center;">
+            <button type="submit">Calculer</button>
+            <button type="reset">Effacer les champs</button>
+        </div>
+
+    </form>
+
+    <!-- Script inchangé -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById('formSalaire');
+            const inputs = form.querySelectorAll('input[type="number"], input[type="radio"], input[type="range"]');
+            const champModifie = document.getElementById('champ_modifie');
+
+            const tempsTravail = document.getElementById('temps_travail');
+            const tempsTravailVal = document.getElementById('temps_travail_val');
+
+            const tauxPrelevement = document.getElementById('taux_prelevement');
+            const tauxPrelevementVal = document.getElementById('taux_prelevement_val');
+
+            tempsTravail.addEventListener('input', function() {
+                tempsTravailVal.textContent = tempsTravail.value;
+            });
+
+            tauxPrelevement.addEventListener('input', function() {
+                tauxPrelevementVal.textContent = tauxPrelevement.value;
+            });
+
+            inputs.forEach(input => {
+                input.addEventListener('change', (e) => {
+                    if (e.target.type === "radio" && e.target.name === "statut") {
+                        champModifie.value = "statut";
+                    } else {
+                        champModifie.value = e.target.name;
+                    }
+                    form.submit();
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

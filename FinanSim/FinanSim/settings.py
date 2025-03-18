@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'brutnet',  # Ajout de l'application de conversion, pour nous elle s'appelle brutnet
 ]
 
 MIDDLEWARE = [
