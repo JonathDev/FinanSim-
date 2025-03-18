@@ -146,6 +146,8 @@ function calcul_taux() {
 function fn_taux() {
     taux=document.getElementById("taux").value;
     document.getElementById("taux_text").innerHTML=taux;
+    const mensuel_net=document.getElementById("mensuel_net").value
+    document.getElementById("resultat").innerHTML=Math.round((100-taux)/100*mensuel_net);
 }
 
 function fn_temps_travail() {
