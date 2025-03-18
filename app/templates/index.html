@@ -12,33 +12,33 @@
         <div class="col">
           Horaire Brut
           <br>
-          <input id="horaire_brut">
+          <input id="horaire_brut" class="form-control">
           <br>
           Mensuel Brut
           <br>
-          <input id="mensuel_brut">
+          <input id="mensuel_brut" class="form-control">
           <br>
           Annuel Brut
           <br>
-          <input id="annuel_brut">
+          <input id="annuel_brut" class="form-control">
         </div>
         <div class="col">
           Horaire Net
           <br>
-          <input id="horaire_net">
+          <input id="horaire_net" class="form-control">
           <br>
           Mensuel Net
           <br>
-          <input id="mensuel_net">
+          <input id="mensuel_net" class="form-control">
           <br>
           Annuel Net
           <br>
-          <input id="annuel_net">
+          <input id="annuel_net" class="form-control">
         </div>
         <div class="col">
           Sélectionnez votre statut :
           <br>
-          <select name="Statut" id="statut">
+          <select name="Statut" id="statut" class="form-select">
             <option value="0">Salarié non-cadre</option>
             <option value="1">Salarié cadre</option>
             <option value="2">Fonction publique</option>
@@ -48,18 +48,18 @@
           <br>
           Sélectionnez le taux de prélévement à la source :
           <div class="slidecontainer">
-            <input type="range" min="0" max="43" value="0" step="0.1" class="slider" id="taux">
+            <input type="range" min="0" max="43" value="0" step="0.1" class="slider form-range" id="taux">
             <p id='taux_text'><p>
           </div>
           Sélectionnez votre temps de travail (en %) :
           <br>
           <div class="slidecontainer">
-            <input type="range" min="0" max="100" value="0" step="1" class="slider" id="temps_travail">
+            <input type="range" min="0" max="100" value="0" step="1" class="slider form-range" id="temps_travail">
             <p id='temps_travail_text'><p>
           </div>
           Sélectionnez le nombre de mois de prime conventionnelle :
           <br>
-          <select name="Prime" id="prime">
+          <select name="Prime" id="prime" class="form-select">
             <option value=12>12</option>
             <option value=13>13</option>
             <option value=14>14</option>
