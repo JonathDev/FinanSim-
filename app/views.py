@@ -25,3 +25,11 @@ def root():
 @user_blueprint.route('/index', methods=["GET"])
 def index():
     return render_template('index.html',url=url_for('user_blueprint.root'))
+
+@user_blueprint.route('/dates', methods=["GET"])
+def dates():
+    return render_template('dates.html',url=url_for('user_blueprint.root'))
+
+@user_blueprint.route('/credit', methods=["GET"])
+def credit():
+    return render_template('credit.html',url=url_for('user_blueprint.root'))

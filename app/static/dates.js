@@ -9,4 +9,4 @@ function calcul() {
     document.getElementById('resultat').innerHTML=TotalDiffDays + ' jours';
 }
 
-document.getElementById('boutton').addEventListener('mousedown',calcul);
+document.getElementById('bouton').addEventListener('mousedown',calcul);
