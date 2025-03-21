@@ -9,10 +9,21 @@
 <body>
   {% include "components/navbar.html" %}
     <div class="container text-center" style="margin-top: 100px">
+        <select name="a" id="calcul" class="form-select">
+            <option value="0">Calculer la mensualité</option>
+            <option value="1">Calculer la capacité d'emprunt</option>
+            <option value="2">Calculer la durée de remboursement</option>
+            <option value="3">Calculer le taux d'emprunt</option>
+        </select>
+        <br>
         <input id="capital" class="form-control" placeholder="Capital emprunté">
+        <br>
         <input id="taux" class="form-control" placeholder="Taux d'intérêt annuel">
+        <br>
         <input id="duree" class="form-control" placeholder="Durée de remboursement">
+        <br>
         <input id="mensu" class="form-control" placeholder="Montant mensualité">
+        <br>
         <input id="cout" class="form-control" placeholder="Coût total">
     </div>
     <br>
