@@ -51,7 +51,7 @@ function taux() {
   const n=document.getElementById("duree").value;
   const m = document.getElementById('mensu').value;
   const t=newtonRaphson(equation, equation_der, 0.0001, .001, 1000)/100;
-  document.getElementById('taux').value=parseFloat((t.toFixed(2));
+  document.getElementById('taux').value=parseFloat(t.toFixed(2));
   document.getElementById('cout').value=Math.round(m*n-M);
 }
 
