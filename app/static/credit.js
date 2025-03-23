@@ -91,11 +91,40 @@ function changer_calcul() {
 
 changer_calcul();
 
-function calcul() {
-  etat();
-};
-
-calcul.fonction=mensu;
-
 document.getElementById("bouton").addEventListener("mouseup",calcul);
 document.getElementById("calcul").addEventListener("mouseup",changer_calcul);
+
+function range(start, end) {
+    return (new Array(end - start + 1)).fill(undefined).map((_, i) => start + i);
+}
+
+
+function calcul() {
+  etat();
+  const t=document.getElementById("taux").value/100;
+  const n=document.getElementById("duree").value;
+  const M=document.getElementById("capital").value;
+  const m=document.getElementById('mensu').value;
+  console.log(M);
+  interval=range(0, n);
+  var Remboursement = {
+    x: interval,
+    y: interval.map(a => a * m),
+    type: 'lines',
+    fill: 'tonexty',
+    name: 'Capital remboursé',
+  };
+  var Capital_remboursé = {
+    x: interval,
+    y: interval.map(a => a*m-a*((M*t/12))/(1-Math.pow(1+(t/12),-a))+200000),
+    type: 'lines',
+    fill: 'tonexty',
+    name: 'Intérêt',
+  };
+  var data = [Remboursement,Capital_remboursé];
+  Plotly.newPlot('Plot', data);
+};
+
+
+
+
