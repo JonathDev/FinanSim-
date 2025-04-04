@@ -33,3 +33,7 @@ def dates():
 @user_blueprint.route('/credit', methods=["GET"])
 def credit():
     return render_template('credit.html',url=url_for('user_blueprint.root'))
+
+@user_blueprint.route('/auto_entrepreneur', methods=["GET"])
+def auto_entrepreneur():
+    return render_template('auto_entrepreneur.html',url=url_for('user_blueprint.root'))

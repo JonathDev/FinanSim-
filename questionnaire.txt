@@ -1,0 +1,37 @@
+questionnaire_revenu :
+    Quelle est votre date de début d’activité ? :
+    Bénéficiez-vous du versement libératoire de l'impôt sur le revenu ? :
+    oui :
+        Dans quelle commune l'établissement est-il implanté ? : fin
+    non :
+        Comment souhaitez-vous calculer l’impôt sur le revenu ? :
+        Avec le taux neutre :
+            Dans quelle commune l'établissement est-il implanté ? : fin
+        Avec un taux personnalisé :
+            Quel est votre taux de prélèvement à la source ? :
+                Dans quelle commune l'établissement est-il implanté ? : fin
+        Avec le barème standard :
+            Combien d’enfants sont à charge du foyer fiscal ? :
+                Dans quelle commune l'établissement est-il implanté ? : fin
+
+
+si activité mixte :
+        Prestations de service commerciales ou artisanales (BIC)
+        Autres prestations de service et activités libérales (BNC)
+        Vente de biens, restauration, hébergement (BIC)
+
+
+Quelle est la nature de votre activité principale ? :
+    artisanale, commerciale :
+        Vente de biens, restauration ou hébergement :
+            questionnaire_revenu
+
+        Prestation de service :
+            questionnaire_revenu
+    libéral :
+        Est-ce une activité libérale réglementée ?
+        oui :
+            questionnaire_revenu
+
+        non :
+            questionnaire_revenu
